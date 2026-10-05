@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Placeholder stadium opening">
+  <defs><linearGradient id="sky" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#16344a"/><stop offset="1" stop-color="#08131f"/></linearGradient></defs>
+  <rect width="1200" height="800" fill="url(#sky)"/>
+  <path d="M0 580 Q600 390 1200 580 V800 H0Z" fill="#155d37"/>
+  <path d="M0 620 Q600 440 1200 620" fill="none" stroke="#d9f99d" stroke-opacity=".3" stroke-width="4"/>
+  <circle cx="600" cy="300" r="100" fill="#fff" fill-opacity=".04"/>
+</svg>

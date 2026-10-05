@@ -1,0 +1,236 @@
+/* Import elegant fonts - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+  --primary: #6366f1;
+  --primary-foreground: #ffffff;
+  --secondary: #f1f5f9;
+  --secondary-foreground: #0f172a;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #f1f5f9;
+  --accent-foreground: #0f172a;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #6366f1;
+  --radius: 0.75rem;
+
+  /* Elegant wedding theme colors */
+  --cream: #faf9f6;
+  --ivory: #f8f6f0;
+  --champagne: #f7e7ce;
+  --gold: #d4af37;
+  --rose-gold: #b76e79;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-inter);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+@keyframes takaven-player-approach {
+  0%, 100% { transform: translateX(-18px) scale(0.82); opacity: 0.65; }
+  55% { transform: translateX(92px) scale(1.08); opacity: 1; }
+}
+
+@keyframes takaven-ball-kick {
+  0%, 42% { transform: translate(0, 0) scale(1); }
+  68% { transform: translate(82px, -25px) scale(1.35); }
+  100% { transform: translate(260px, -160px) scale(6); opacity: 0; }
+}
+
+.takaven-player { animation: takaven-player-approach 2.4s cubic-bezier(.2,.8,.2,1) infinite; }
+.takaven-ball { animation: takaven-ball-kick 2.4s cubic-bezier(.2,.8,.2,1) 0.45s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .takaven-player,
+  .takaven-ball { animation: none; }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Elegant wedding invitation styles */
+.font-script {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-body {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.bg-cream {
+  background-color: var(--cream);
+}
+
+.bg-ivory {
+  background-color: var(--ivory);
+}
+
+/* Section padding for elegant pages */
+.section-padding {
+  padding: 4rem 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 2rem;
+  }
+}
+
+/* Elegant card style */
+.card-elegant {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+}
+
+/* Shadow styles */
+.shadow-soft {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+}
+
+/* Tabular numbers for countdown */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Video background styles */
+.video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Elegant divider */
+.elegant-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.elegant-divider::before,
+.elegant-divider::after {
+  content: '';
+  height: 1px;
+  width: 4rem;
+  background-color: currentColor;
+  opacity: 0.3;
+}
+
+/* Sepia filter for maps */
+.map-sepia {
+  filter: sepia(0.2);
+  transition: filter 0.5s ease;
+}
+
+.map-sepia:hover {
+  filter: sepia(0);
+}

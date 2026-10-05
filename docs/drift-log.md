@@ -1,0 +1,24 @@
+# TAKAVEN Drift Log
+
+Adversarial guard for Phase 1. A `BLOCK` finding stops the affected workstream
+until the Orchestrator resolves it.
+
+| Date | Status | Finding | Resolution / owner |
+|---|---|---|---|
+| 2026-10-05 | PASS | Repository remains a single Next.js application using the imported operational base. | Orchestrator |
+| 2026-10-05 | PASS | Football is selected through `theme_id` and the opening registry; no football-only public route or RSVP page was added. | Base / Event Engine |
+| 2026-10-05 | PASS | Existing invitation renderer, `/i/[slug]`, Supabase model, and RSVP action remain in place. | Base / Event Engine |
+| 2026-10-05 | PASS | Cinematic layer is isolated from invitation content and exposes completion/skip behavior. | Cinematic Experience |
+| 2026-10-05 | PASS | Mobile integration initially exposed a reused `EntryAnimation` z-index conflict; the adapter now makes the TAKAVEN opening the single entry layer and Skip is clickable at 390x844. | Orchestrator / Cinematic Experience |
+| 2026-10-05 | PASS | No billing, subscriptions, CRM, analytics platform, social integration, microservice, or second database added. | Orchestrator |
+| 2026-10-05 | WARNING | Upstream repository licence files remain unverified; this blocks commercial release, not the internal prototype. | Provenance Reviewer |
+| 2026-10-05 | WARNING | Real Supabase-backed RSVP persistence still requires a configured project; the local fixture deliberately does not fake persistence. Missing Resend configuration no longer causes module-evaluation failure. | Mobile QA / Base |
+| 2026-10-05 | WARNING | Full inherited lint is not green; focused TAKAVEN files pass. Upstream lint debt was not mass-rewritten. | Orchestrator |
+
+## Active guard rules
+
+1. Reuse before rebuild.
+2. Keep event categories generic.
+3. Keep Football as configuration, not an invitation page.
+4. Keep the opening optional and non-blocking.
+5. Stop after the placeholder Football vertical slice; do not add a second theme.

@@ -1,0 +1,46 @@
+import type { Invitation } from '@/types/database'
+
+/** Opt-in engineering fixture; never used unless TAKAVEN_DEMO_MODE is true. */
+export const demoFootballInvitation: Invitation = {
+  id: 'takaven-football-demo',
+  user_id: 'takaven-demo',
+  slug: 'football-demo',
+  title: 'Aiden turns 10',
+  subtitle: 'You are invited to matchday',
+  message: 'Join us for a football birthday celebration.',
+  event_date: '2026-12-12',
+  event_time: '16:30',
+  location_name: 'TAKAVEN Stadium',
+  location_address: 'Port Louis, Mauritius',
+  location_map_url: 'https://maps.google.com/?q=Port+Louis+Mauritius',
+  invitation_type: 'birthday',
+  theme_style: 'modern',
+  animation_type: 'fade',
+  primary_color: '#0f766e',
+  secondary_color: '#0f172a',
+  accent_color: '#a3e635',
+  background_color: '#07111d',
+  text_color: '#f8fafc',
+  font_family: 'Inter',
+  background_image_url: null,
+  hero_image_url: null,
+  video_url: null,
+  music_url: null,
+  hosts: ['TAKAVEN'],
+  show_countdown: true,
+  show_rsvp: true,
+  rsvp_deadline: null,
+  custom_css: null,
+  custom_fields: {
+    age: 10,
+    celebrant_name: 'Aiden',
+    theme_id: 'football',
+    opening_experience_id: 'football-kick',
+    timezone: 'Indian/Mauritius'
+  },
+  status: 'published',
+  view_count: 0,
+  published_at: '2026-10-05T00:00:00.000Z',
+  created_at: '2026-10-05T00:00:00.000Z',
+  updated_at: '2026-10-05T00:00:00.000Z'
+}

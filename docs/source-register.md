@@ -1,0 +1,29 @@
+# TAKAVEN Source Register
+
+This register records material reuse and provenance for the Phase 1 prototype.
+It is an engineering record, not a commercial licensing clearance. Direct
+distribution remains blocked until each reused source has a verified licence or
+written permission.
+
+| Source | Upstream commit | Relevant material | TAKAVEN destination | Mode | Changes / asset posture | Licence status |
+|---|---|---|---|---|---|---|
+| [`utopusc/invitation-builder`](https://github.com/utopusc/invitation-builder) | `4ba571fc131212c20e1ea0d66a939360ed55e60f` | Next.js app, Supabase data model, dashboard/editor, public route, invitation renderers, RSVP | Application root; `src/app/i/[slug]`, `src/components/invitation`, `src/lib`, `src/types`, `supabase` | ADAPTED | Imported as the operational base. Existing renderer and RSVP remain in place behind the TAKAVEN engine boundary. No third-party sample media was added beyond the upstream base during this prototype step. | README claims MIT; no `LICENSE` file was present in the audited snapshot. Verify before release. |
+| [`prior-gsap-animation-portfolio-website-template`](https://github.com/Relaxkartikey/prior-gsap-animation-portfolio-website-template) | `8b2092b89cd87922bca3a9556f8fb258b48c393f` | Canvas/frame-sequence, preloader, mobile tier, skip/fallback mechanics | `src/components/invitation/football-opening.tsx` contract and bounded placeholder implementation | PATTERN | No PRIOR code, frames, video, or remote media copied. The Phase 1 opening is a small CSS/SVG placeholder with the same lifecycle goals. | README/JSON-LD claims MIT; no `LICENSE` file and media rights unverified. |
+| [`Mohitscodiclab/ZYPHORA`](https://github.com/Mohitscodiclab/ZYPHORA) | `c2dc1c4130039ea6a7c952414028f635fa8ca2d1` | URL-state builder, share/export ideas | None in Phase 1 | REFERENCE | No code or branded output reused. | README claims MIT; no `LICENSE` file in audited snapshot. |
+| [`norafrank-official/Invitation-Generator`](https://github.com/norafrank-official/Invitation-Generator) | `b586c8d4d16b2747c6d7625ce8c004cfb08d5cfd` | Guest token/RSVP workflow | None in Phase 1 | REFERENCE | Personalised guest links deliberately deferred. | No clear licence found; no direct reuse. |
+| [`criix23/Wedding-Website-Template`](https://github.com/criix23/Wedding-Website-Template) | `75f11fe9ae48c1c57c5c146760811acd0869f6a6` | Mobile visual treatment, countdown/map references | None in Phase 1 | PATTERN | No wedding sample assets or Mapbox implementation copied. | README claims MIT; no `LICENSE` file in audited snapshot. Sample media has separate rights. |
+| [`Olawill/Ceremonia`](https://github.com/Olawill/Ceremonia) | Not accessible anonymously during Phase 0 | EventEngine vocabulary and section-registry ideas from README/indexed metadata | `docs/phase-0-recommendation.md` only | PATTERN | No source code copied; SaaS complexity intentionally excluded. | Not verifiable. |
+
+## Phase 1 TAKAVEN additions
+
+- `src/lib/engine/contracts.ts` — minimal `EventConfig`, `ThemeDefinition`,
+  and `OpeningExperience` contracts.
+- `src/lib/engine/event-config.ts` — maps the existing invitation row into the
+  generic boundary while retaining `custom_fields` as a migration bridge.
+- `src/lib/engine/theme-registry.ts` — selects the Football opening by config.
+- `src/components/invitation/invitation-engine.tsx` — opening/reveal lifecycle
+  around the existing invitation shell.
+- `src/components/invitation/football-opening.tsx` — placeholder opening with
+  skip, reduced-motion, and media-failure-safe behavior.
+- `public/takaven/opening/football-placeholder.svg` — original TAKAVEN placeholder
+  artwork created for engineering validation.
