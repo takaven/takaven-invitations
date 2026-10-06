@@ -140,6 +140,14 @@ No new repository materially changed implementation. The approved
 
 - Real invitation read, RSVP persistence, operator response visibility, and
   deployed RLS still require an owner-supplied Supabase project configuration.
+- The inherited `rsvp_deadline` field is stored but is not enforced by the
+  existing RSVP action; this separate product-rule decision was not expanded
+  into this validation pass.
+- Public RSVP owner-email notifications may be suppressed by the inherited
+  profile RLS policy; the operator response dashboard remains the source of
+  truth and should be tested separately with the real project.
+- The base schema and migrations contain existing drift around media columns
+  and view-count naming; this phase did not broaden into schema cleanup.
 - Existing full-repository lint debt remains.
 - Next.js middleware deprecation remains inherited.
 - Performance figures are development observations.
