@@ -73,3 +73,29 @@ timeline and the existing `OpeningExperience` completion contract. The assets ar
 new TAKAVEN project media, not copied from any repository. The total compressed
 asset set is approximately 273 KB before transfer overhead, with no video,
 WebGL runtime, audio or third-party model dependency.
+
+## Phase 2.2 art-direction correction round — 2026-10-06
+
+The required targeted search covered child character animation, football/soccer
+sprites, matchday/broadcast UI, scoreboards and cinematic sports landing pages.
+The result was to reuse patterns, not import a game or a stock media package.
+
+| Repository | Relevant component / pattern | Recommendation | Decision |
+|---|---|---|---|
+| [`pixijs/pixijs-skills`](https://github.com/pixijs/pixijs-skills) | `AnimatedSprite` lifecycle for walk/run/explosion frame playback | REFERENCE | Useful if authored child frames arrive later; not imported for one opening scene. |
+| [`JimboPicton/sprite-pose-agent`](https://github.com/JimboPicton/sprite-pose-agent) | Character reference to run-cycle/sprite-sheet workflow | REFERENCE | Production aid only; no runtime dependency or generated frames copied. |
+| [`Code4Community/CodeStrikers`](https://github.com/Code4Community/CodeStrikers) | Browser football player/ball layering and movement concepts | REFERENCE | Game logic is unnecessary for TAKAVEN; no code or assets copied. |
+| [`openfootmanager/openfootmanager`](https://github.com/openfootmanager/openfootmanager) | Matchday broadcast design language: navy, emerald, condensed hierarchy | REFERENCE / ADAPT | Adapted visual principles into TAKAVEN-owned CSS; no source code copied. |
+| [`JosephMaynard/playoverlay`](https://github.com/JosephMaynard/playoverlay) | Broadcast score bug, match clock and scoreboard information hierarchy | REFERENCE | Confirmed the restrained broadcast hierarchy; desktop operator application is not relevant to the invitation runtime. |
+| [`Zaker237/scoreboardsweb`](https://github.com/Zaker237/scoreboardsweb) | Responsive football fixture/scoreboard composition | REFERENCE | MIT surfaced in repository metadata; not transplanted because it solves a different data product. |
+| [`TidyFactor/Cinematic`](https://github.com/TidyFactor/Cinematic) | Bounded frame loading, failure and reduced-motion fallback | REUSE LIFECYCLE / REFERENCE | Existing opening contract retains this discipline; authored child asset remains TAKAVEN-owned. |
+
+### Phase 2.2 decision
+
+No search result provided a licence-clear, drop-in child footballer or a
+commercially suitable kick-to-camera sequence. The selected approach is a
+TAKAVEN-owned transparent child runner asset, dynamically overlaid with the
+event age as the jersey number, and animated through the existing CSS opening
+timeline. The invitation body uses a new Football presentation adapter while
+reusing the existing countdown and RSVP components. No third-party code, sample
+media, character model or scoreboard implementation was copied.

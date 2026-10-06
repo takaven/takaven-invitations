@@ -65,3 +65,30 @@ mechanism references only.
 The three raster assets were created for this project and do not contain
 third-party logos, sample media, or customer-specific data. Names, ages, dates,
 venue and RSVP content remain HTML/configuration-driven.
+
+## Phase 2.2 visual correction additions
+
+- `src/components/invitation/football-invitation-body.tsx` — TAKAVEN-owned
+  Football presentation adapter. It changes only the visual composition and
+  reuses the shared `BirthdayCountdown` and `RSVPForm` functionality.
+- `src/components/invitation/birthday-functional-sections.tsx` — extracted
+  shared countdown and RSVP presentation/behavior from the inherited birthday
+  renderer so the Football adapter does not duplicate event logic or the
+  `submitRSVP` path.
+- `public/takaven/football/child-player.webp` — generated TAKAVEN project
+  foreground character, a rear-facing stylised child footballer with a blank
+  jersey back. The event age is rendered as HTML over the jersey at runtime.
+  The asset is project-owned generated media; no third-party character, logo,
+  model, frame or sample media was copied.
+- `src/components/invitation/football-visual-master.tsx` and
+  `src/app/globals.css` — adapted to reference the child runner and animate it
+  through the existing opening lifecycle. This is ADAPTED TAKAVEN code, not a
+  transplanted implementation.
+
+The Phase 2.2 scout references (`pixijs/pixijs-skills`,
+`JimboPicton/sprite-pose-agent`, `Code4Community/CodeStrikers`,
+`openfootmanager/openfootmanager`, `JosephMaynard/playoverlay`, and
+`Zaker237/scoreboardsweb`) remain REFERENCE-only. Their code and assets were
+not copied. Licence status is recorded in the reuse scout log where surfaced;
+commercial release still requires a separate licence review for the inherited
+upstream base and generated-media terms.

@@ -11,7 +11,7 @@ export const themeRegistry: Record<ThemeDefinition['id'], ThemeDefinition> = {
     id: 'football',
     label: 'Football',
     openingExperienceId: 'football-kick',
-    description: 'A procedural stadium-to-impact opening over the reusable invitation shell.'
+    description: 'A stadium-to-impact opening over the reusable matchday invitation shell.'
   }
 }
 
@@ -26,7 +26,7 @@ export const openingExperienceRegistry: Record<OpeningExperience['id'], OpeningE
   'football-kick': {
     id: 'football-kick',
     label: 'Football kick reveal',
-    mobileAssetBudgetKb: 64,
+    mobileAssetBudgetKb: 300,
     supportsSkip: true,
     supportsReducedMotion: true
   }

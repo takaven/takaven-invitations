@@ -26,6 +26,10 @@ until the Orchestrator resolves it.
 | 2026-10-06 | PASS | Phase 2.1 replaces only the Football visual media layer; `OpeningExperience`, invitation shell, countdown, directions and RSVP remain unchanged. | Orchestrator / Visual Production |
 | 2026-10-06 | PASS | The selected visual mechanism uses three compressed project assets and the existing runtime; no video pipeline, WebGL engine, second theme, customer media workflow or new service was introduced. | Drift Guard |
 | 2026-10-06 | WARNING | Generated Football art is a first commercial visual master candidate and still requires owner review for brand/art direction before release. | Creative Director / Owner |
+| 2026-10-06 | PASS | Phase 2.2 replaces the rejected adult player with a rear-facing child runner and keeps the approved stadium asset. | Visual Production |
+| 2026-10-06 | PASS | The Football invitation body now has a matchday presentation adapter while `BirthdayCountdown` and `RSVPForm` remain shared functional components. | Orchestrator / Continuity Reviewer |
+| 2026-10-06 | PASS | No second theme, game engine, new service, billing, social integration or customer media workflow was added. | Drift Guard |
+| 2026-10-06 | WARNING | Final commercial art direction still needs owner review of the captured opening and invitation flow. | Creative Director / Owner |
 
 ## Active guard rules
 

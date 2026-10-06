@@ -9,7 +9,7 @@ interface FootballVisualMasterProps {
 }
 
 const STADIUM_ASSET = '/takaven/football/stadium.webp'
-const PLAYER_ASSET = '/takaven/football/player.webp'
+const PLAYER_ASSET = '/takaven/football/child-player.webp'
 const BALL_ASSET = '/takaven/football/ball.webp'
 const MASTER_DURATION_MS = 6800
 
@@ -93,14 +93,15 @@ export function FootballVisualMaster({ config, onComplete }: FootballVisualMaste
       </div>
 
       <div className="takaven-football-master__copy" aria-hidden>
-        <span className="takaven-football-master__eyebrow">A new fixture awaits</span>
-        <span className="takaven-football-master__headline">The moment before the moment.</span>
+        <span className="takaven-football-master__eyebrow">The fixture is locked in</span>
+        <span className="takaven-football-master__headline">Step into the lights.</span>
         <span className="takaven-football-master__rule" />
       </div>
 
       <div className="takaven-football-master__player" aria-hidden>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={PLAYER_ASSET} alt="" onError={complete} />
+        {config.age && <span className="takaven-football-master__jersey-number">{config.age}</span>}
       </div>
 
       <div className="takaven-football-master__ball" aria-hidden>
