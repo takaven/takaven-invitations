@@ -14,6 +14,9 @@ until the Orchestrator resolves it.
 | 2026-10-05 | WARNING | Upstream repository licence files remain unverified; this blocks commercial release, not the internal prototype. | Provenance Reviewer |
 | 2026-10-05 | WARNING | Real Supabase-backed RSVP persistence still requires a configured project; the local fixture deliberately does not fake persistence. Missing Resend configuration no longer causes module-evaluation failure. | Mobile QA / Base |
 | 2026-10-05 | WARNING | Full inherited lint is not green; focused TAKAVEN files pass. Upstream lint debt was not mass-rewritten. | Orchestrator |
+| 2026-10-06 | PASS | RSVP-disabled invitations are now guarded both in `submitRSVP` and the Supabase INSERT policy. | RSVP / Data |
+| 2026-10-06 | PASS | Football countdown now combines event date, event time, and configured IANA timezone without changing the engine boundary. | Base / Event Engine |
+| 2026-10-06 | WARNING | Real Supabase connectivity could not be executed: no project URL/anon key is configured and the available management token returned 401. | Owner / RSVP / Data |
 
 ## Active guard rules
 

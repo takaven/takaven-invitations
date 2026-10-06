@@ -27,6 +27,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { submitRSVP } from '@/lib/actions/invitations'
+import { getEventTimestamp } from '@/lib/utils'
 import { EntryAnimation, EntryAnimationType } from './entry-animation'
 
 interface BirthdayPageProps {
@@ -204,12 +205,20 @@ function AnimatedAge({ age }: { age: number }) {
 }
 
 // Countdown component
-function BirthdayCountdown({ targetDate }: { targetDate: string }) {
+function BirthdayCountdown({
+  targetDate,
+  targetTime,
+  timeZone
+}: {
+  targetDate: string
+  targetTime?: string | null
+  timeZone?: string
+}) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const difference = new Date(targetDate).getTime() - new Date().getTime()
+      const difference = getEventTimestamp(targetDate, targetTime, timeZone) - Date.now()
       if (difference > 0) {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -223,7 +232,7 @@ function BirthdayCountdown({ targetDate }: { targetDate: string }) {
     calculateTimeLeft()
     const timer = setInterval(calculateTimeLeft, 1000)
     return () => clearInterval(timer)
-  }, [targetDate])
+  }, [targetDate, targetTime, timeZone])
 
   const padNumber = (num: number) => num.toString().padStart(2, '0')
 
@@ -294,12 +303,14 @@ function MusicPlayer({ musicUrl }: { musicUrl?: string | null }) {
 // RSVP Form
 function RSVPForm({ invitationId, onSuccess }: { invitationId: string; onSuccess: () => void }) {
   const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [attending, setAttending] = useState('yes')
   const [guestCount, setGuestCount] = useState(1)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setLoading(true)
+    setErrorMessage('')
 
     const formData = new FormData(e.currentTarget)
     formData.set('attending', attending === 'yes' ? 'true' : 'false')
@@ -310,6 +321,7 @@ function RSVPForm({ invitationId, onSuccess }: { invitationId: string; onSuccess
       onSuccess()
     } catch (error) {
       console.error('RSVP error:', error)
+      setErrorMessage('Yanıtınız gönderilemedi. Lütfen tekrar deneyin.')
     } finally {
       setLoading(false)
     }
@@ -395,6 +407,12 @@ function RSVPForm({ invitationId, onSuccess }: { invitationId: string; onSuccess
         />
       </div>
 
+      {errorMessage && (
+        <p role="alert" className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-700">
+          {errorMessage}
+        </p>
+      )}
+
       <Button
         type="submit"
         disabled={loading}
@@ -452,6 +470,7 @@ export function BirthdayPage({ invitation }: BirthdayPageProps) {
   const customFields = invitation.custom_fields as {
     age?: number
     entry_animation?: string
+    timezone?: string
     show_dietary?: boolean
     show_gift_section?: boolean
   }
@@ -645,7 +664,11 @@ export function BirthdayPage({ invitation }: BirthdayPageProps) {
                 Büyük güne ne kadar kaldı?
               </p>
             </motion.div>
-            <BirthdayCountdown targetDate={invitation.event_date} />
+            <BirthdayCountdown
+              targetDate={invitation.event_date}
+              targetTime={invitation.event_time}
+              timeZone={customFields?.timezone}
+            />
           </div>
         </section>
       )}

@@ -161,13 +161,13 @@ USING (
   )
 );
 
--- Anyone can submit RSVP to published invitations
+-- Anyone can submit RSVP to published invitations with RSVP enabled
 CREATE POLICY "Anyone can submit RSVP to published invitations"
 ON rsvp_responses FOR INSERT
 TO anon, authenticated
 WITH CHECK (
   invitation_id IN (
-    SELECT id FROM invitations WHERE status = 'published'
+    SELECT id FROM invitations WHERE status = 'published' AND show_rsvp = true
   )
 );
 

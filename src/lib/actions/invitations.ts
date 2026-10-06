@@ -286,6 +286,26 @@ export async function submitRSVP(invitationId: string, formData: FormData) {
   const guestCount = parseInt(formData.get('guest_count') as string) || 1
   const message = formData.get('message') as string || null
 
+  if (!name?.trim()) {
+    throw new Error('RSVP adı gerekli')
+  }
+
+  if (guestCount < 1 || guestCount > 20) {
+    throw new Error('Geçersiz misafir sayısı')
+  }
+
+  const { data: rsvpInvitation, error: invitationError } = await supabase
+    .from('invitations')
+    .select('id')
+    .eq('id', invitationId)
+    .eq('status', 'published')
+    .eq('show_rsvp', true)
+    .single()
+
+  if (invitationError || !rsvpInvitation) {
+    throw new Error('Bu davetiye RSVP kabul etmiyor')
+  }
+
   const rsvp = {
     invitation_id: invitationId,
     name,
