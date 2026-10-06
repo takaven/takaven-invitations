@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import type { EventConfig } from '@/lib/engine/contracts'
 import { openingExperienceRegistry } from '@/lib/engine/theme-registry'
-import { FootballOpening } from './football-opening'
+import { FootballVisualMaster } from './football-visual-master'
 import { FootballThemeFrame } from './football-theme-frame'
 
 interface InvitationEngineProps {
@@ -37,7 +37,7 @@ export function InvitationEngine({ config, children }: InvitationEngineProps) {
     <>
       {openingVisible && config.openingExperienceId === 'football-kick' && (
         <div key="football-opening" className="fixed inset-0 z-[10000]">
-          <FootballOpening config={config} onComplete={completeOpening} />
+          <FootballVisualMaster config={config} onComplete={completeOpening} />
         </div>
       )}
 

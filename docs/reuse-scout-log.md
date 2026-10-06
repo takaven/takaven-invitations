@@ -50,3 +50,26 @@ that can show stadium atmosphere, player approach, kick, ball-to-camera and impa
 without importing a game engine or a large third-party media payload. The visual
 language is original TAKAVEN code; no third-party code, footage, frames, models,
 audio or sample assets are copied.
+
+## Phase 2.1 commercial visual mechanism round — 2026-10-06
+
+The second targeted search compared asset-backed sports hero patterns before
+implementation. The decision was based on mechanism reuse, not on copying a
+third-party visual identity or media.
+
+| Mechanism / reference | Evidence found | Recommendation | Phase 2.1 decision |
+|---|---|---|---|
+| Authored short video | [`rairamalho/hero-text-gsap-ramalho`](https://github.com/rairamalho/hero-text-gsap-ramalho) demonstrates a configurable image/video hero with overlay and lazy-loaded media. | ADAPT PATTERN | Keep as a future option; no production video is available yet and autoplay/video transfer would add an unnecessary first dependency. |
+| Image/frame sequence | [`Remilya/scroll-hero`](https://github.com/Remilya/scroll-hero) and [`TidyFactor/Cinematic`](https://github.com/TidyFactor/Cinematic) provide canvas lifecycle, poster fallback, and reduced-motion patterns. | REUSE LIFECYCLE / REFERENCE MEDIA | Keep the loading/fallback discipline; do not import a frame sequence until authored frames justify the payload. |
+| AI-generated cinematic clip | No directly reusable, licence-clear GitHub implementation was found that materially reduces TAKAVEN production time. | IGNORE FOR THIS PASS | Avoid introducing a generation pipeline or customer-specific media dependency. |
+| Layered 2D + existing motion stack | [`adrianhajdin/award-winning-website`](https://github.com/adrianhajdin/award-winning-website) demonstrates media handoffs and clip-path transitions; [`free-gsap-effects/parallax-hero`](https://github.com/jaydickinson/free-gsap-effects) documents layered timeline cleanup and reduced-motion behavior. | ADAPT PATTERN | SELECTED. Use compressed TAKAVEN-authored raster layers with CSS animation and the existing Framer Motion/runtime boundary; no GSAP dependency added. |
+| Lightweight WebGL / Three.js | Football/game references such as [`midnight-kicks`](https://github.com/kuiralabs/midnight-kicks) show the fidelity ceiling of a full 3D scene. | REFERENCE ONLY | Rejected for this invitation master because runtime, character assets, and mobile failure surface are disproportionate. |
+
+### Phase 2.1 decision
+
+The selected mechanism is an asset-backed 2D master: a generated stadium
+backdrop, isolated footballer and isolated ball, animated with a bounded CSS
+timeline and the existing `OpeningExperience` completion contract. The assets are
+new TAKAVEN project media, not copied from any repository. The total compressed
+asset set is approximately 273 KB before transfer overhead, with no video,
+WebGL runtime, audio or third-party model dependency.

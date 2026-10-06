@@ -23,6 +23,9 @@ until the Orchestrator resolves it.
 | 2026-10-06 | PASS | No second theme, billing, SaaS expansion, new database, or media pipeline was added. | Drift Guard |
 | 2026-10-06 | WARNING | The procedural player is an engineering-quality silhouette, not final commercial Football artwork. Visual production remains a later owner-approved step. | Visual QA / Owner |
 | 2026-10-06 | WARNING | Full production-mode browser validation remains blocked until Supabase URL and anon key are supplied; demo-mode visual validation is separate and does not prove persistence. | RSVP / Data |
+| 2026-10-06 | PASS | Phase 2.1 replaces only the Football visual media layer; `OpeningExperience`, invitation shell, countdown, directions and RSVP remain unchanged. | Orchestrator / Visual Production |
+| 2026-10-06 | PASS | The selected visual mechanism uses three compressed project assets and the existing runtime; no video pipeline, WebGL engine, second theme, customer media workflow or new service was introduced. | Drift Guard |
+| 2026-10-06 | WARNING | Generated Football art is a first commercial visual master candidate and still requires owner review for brand/art direction before release. | Creative Director / Owner |
 
 ## Active guard rules
 

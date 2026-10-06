@@ -48,3 +48,20 @@ The targeted scout also reviewed `Remilya/scroll-hero` (MIT),
 `Akash-AIML/stadium-os-fifa2026` (license not surfaced). None was copied into
 the product. They remain recorded in `docs/reuse-scout-log.md` as future
 mechanism references only.
+
+## Phase 2.1 visual master additions
+
+- `src/components/invitation/football-visual-master.tsx` — new TAKAVEN-owned
+  asset-backed opening layer. It preserves the existing `onComplete`, skip,
+  reduced-motion, bounded preload, and failure-fallthrough contract. No
+  third-party source code was copied.
+- `public/takaven/football/stadium.webp` — generated TAKAVEN project backdrop,
+  compressed to approximately 110 KB.
+- `public/takaven/football/player.webp` — generated TAKAVEN project foreground
+  cutout, compressed to approximately 79 KB.
+- `public/takaven/football/ball.webp` — generated TAKAVEN project foreground
+  object, compressed to approximately 85 KB.
+
+The three raster assets were created for this project and do not contain
+third-party logos, sample media, or customer-specific data. Names, ages, dates,
+venue and RSVP content remain HTML/configuration-driven.

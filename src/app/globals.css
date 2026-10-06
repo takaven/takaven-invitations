@@ -309,8 +309,306 @@ html {
   background: linear-gradient(135deg, #071c27 0%, #0e5a43 100%) !important;
 }
 
+/* Commercial Football master: authored visual layers with a bounded, timed
+   handoff into the existing invitation engine. Decorative media is isolated
+   from the dynamic name, age and event data. */
+.takaven-football-master {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  overflow: hidden;
+  background: #03070b;
+  color: #f4fbf4;
+  isolation: isolate;
+}
+
+.takaven-football-master__backdrop,
+.takaven-football-master__shade,
+.takaven-football-master__grain,
+.takaven-football-master__scanline,
+.takaven-football-master__impact {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.takaven-football-master__backdrop {
+  opacity: 0;
+  transform: scale(1.08);
+  transform-origin: 50% 58%;
+}
+
+.is-ready .takaven-football-master__backdrop {
+  animation: takaven-football-backdrop 7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.takaven-football-master__backdrop img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.takaven-football-master__shade {
+  background:
+    linear-gradient(180deg, rgba(1, 8, 13, 0.52) 0%, rgba(1, 8, 13, 0.12) 45%, rgba(1, 8, 13, 0.72) 100%),
+    radial-gradient(circle at 50% 58%, transparent 0%, rgba(1, 8, 13, 0.62) 86%);
+  z-index: 1;
+}
+
+.takaven-football-master__grain {
+  z-index: 2;
+  opacity: 0.13;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+}
+
+.takaven-football-master__scanline {
+  z-index: 3;
+  opacity: 0.17;
+  background: repeating-linear-gradient(180deg, transparent 0, transparent 3px, rgba(208, 255, 222, 0.035) 4px, transparent 5px);
+}
+
+.takaven-football-master__topline,
+.takaven-football-master__footer,
+.takaven-football-master__copy {
+  position: absolute;
+  z-index: 8;
+}
+
+.takaven-football-master__topline {
+  top: 1.75rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: rgba(222, 250, 229, 0.72);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+.takaven-football-master__copy {
+  top: 25%;
+  left: 1.25rem;
+  max-width: 18rem;
+  display: grid;
+  gap: 0.85rem;
+  opacity: 0;
+  transform: translateY(1.25rem);
+}
+
+.is-ready .takaven-football-master__copy {
+  animation: takaven-football-copy 6.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.takaven-football-master__eyebrow,
+.takaven-football-master__status {
+  color: #b7ebc5;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.takaven-football-master__headline {
+  max-width: 15rem;
+  color: #f6fff7;
+  font-size: clamp(1.7rem, 8vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 0.96;
+}
+
+.takaven-football-master__rule {
+  width: 5rem;
+  height: 1px;
+  background: linear-gradient(90deg, #b7ebc5, transparent);
+}
+
+.takaven-football-master__player {
+  position: absolute;
+  z-index: 5;
+  bottom: -5%;
+  left: -20%;
+  width: 108%;
+  opacity: 0;
+  transform: translate3d(-18%, 5%, 0) scale(0.7) rotate(-3deg);
+  transform-origin: 50% 85%;
+  filter: saturate(0.84) contrast(1.08) drop-shadow(0 1.5rem 2rem rgba(0, 0, 0, 0.4));
+}
+
+.is-ready .takaven-football-master__player {
+  animation: takaven-football-player 6.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.takaven-football-master__player img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.takaven-football-master__ball {
+  position: absolute;
+  z-index: 7;
+  bottom: 28%;
+  left: 49%;
+  width: clamp(4.2rem, 17vw, 7.5rem);
+  opacity: 0;
+  transform: translate(-50%, 0) scale(0.1) rotate(-16deg);
+  transform-origin: center;
+  filter: drop-shadow(0 0 1.1rem rgba(153, 255, 190, 0.46));
+}
+
+.is-ready .takaven-football-master__ball {
+  animation: takaven-football-ball 6.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.takaven-football-master__ball img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.takaven-football-master__impact {
+  z-index: 9;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+}
+
+.is-ready .takaven-football-master__impact {
+  animation: takaven-football-impact 6.8s ease forwards;
+}
+
+.takaven-football-master__impact-ring {
+  width: 12rem;
+  height: 12rem;
+  border: 1px solid rgba(219, 255, 228, 0.9);
+  border-radius: 999px;
+  box-shadow: 0 0 4rem rgba(127, 255, 168, 0.42), inset 0 0 3rem rgba(127, 255, 168, 0.22);
+  transform: scale(0.1);
+}
+
+.is-ready .takaven-football-master__impact-ring {
+  animation: takaven-football-ring 6.8s ease forwards;
+}
+
+.takaven-football-master__impact-flash {
+  position: absolute;
+  inset: 0;
+  background: #edfff1;
+  transform: scale(0.05);
+}
+
+.is-ready .takaven-football-master__impact-flash {
+  animation: takaven-football-flash 6.8s ease forwards;
+}
+
+.takaven-football-master__footer {
+  right: 1.25rem;
+  bottom: 2rem;
+  left: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.takaven-football-master__skip {
+  min-height: 2.75rem;
+  border: 1px solid rgba(231, 255, 237, 0.44);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.22);
+  padding: 0.7rem 1rem;
+  color: #f5fff7;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.takaven-football-master__skip:focus-visible {
+  outline: 2px solid #c4f7d0;
+  outline-offset: 3px;
+}
+
+@keyframes takaven-football-backdrop {
+  0% { opacity: 0; transform: scale(1.08); }
+  14% { opacity: 1; }
+  78% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0; transform: scale(1.01); }
+}
+
+@keyframes takaven-football-copy {
+  0%, 8% { opacity: 0; transform: translateY(1.25rem); }
+  17%, 63% { opacity: 1; transform: translateY(0); }
+  77%, 100% { opacity: 0; transform: translateY(-0.5rem); }
+}
+
+@keyframes takaven-football-player {
+  0%, 8% { opacity: 0; transform: translate3d(-18%, 5%, 0) scale(0.7) rotate(-3deg); }
+  22% { opacity: 1; transform: translate3d(-7%, 0, 0) scale(0.8) rotate(-1deg); }
+  49% { opacity: 1; transform: translate3d(2%, -1%, 0) scale(0.91) rotate(0deg); }
+  63% { opacity: 1; transform: translate3d(4%, -2%, 0) scale(0.95) rotate(1deg); }
+  78%, 100% { opacity: 0; transform: translate3d(4%, -4%, 0) scale(0.98) rotate(1deg); }
+}
+
+@keyframes takaven-football-ball {
+  0%, 38% { opacity: 0; transform: translate(-50%, 0) scale(0.1) rotate(-16deg); }
+  43% { opacity: 1; transform: translate(-50%, 0) scale(0.14) rotate(32deg); }
+  56% { opacity: 1; transform: translate(-50%, -15%) scale(0.34) rotate(130deg); }
+  70% { opacity: 1; transform: translate(-50%, -62%) scale(1.9) rotate(290deg); }
+  81% { opacity: 1; transform: translate(-50%, -112%) scale(7.6) rotate(460deg); }
+  88%, 100% { opacity: 0; transform: translate(-50%, -118%) scale(14) rotate(600deg); }
+}
+
+@keyframes takaven-football-impact {
+  0%, 76% { opacity: 0; }
+  79%, 87% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes takaven-football-ring {
+  0%, 75% { transform: scale(0.1); opacity: 0; }
+  80% { transform: scale(0.65); opacity: 1; }
+  100% { transform: scale(8); opacity: 0; }
+}
+
+@keyframes takaven-football-flash {
+  0%, 79% { opacity: 0; transform: scale(0.05); }
+  82% { opacity: 0.92; transform: scale(0.8); }
+  100% { opacity: 0; transform: scale(1.25); }
+}
+
+@media (min-width: 768px) {
+  .takaven-football-master__topline,
+  .takaven-football-master__footer {
+    left: 2rem;
+    right: 2rem;
+  }
+
+  .takaven-football-master__copy {
+    left: 2rem;
+    top: 28%;
+  }
+
+  .takaven-football-master__player {
+    bottom: -18%;
+    left: 18%;
+    width: 64%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .takaven-football-opening {
+    display: none !important;
+  }
+
+  .takaven-football-master {
     display: none !important;
   }
 
