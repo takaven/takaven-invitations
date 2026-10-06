@@ -234,3 +234,87 @@ html {
 .map-sepia:hover {
   filter: sepia(0);
 }
+
+/* Football theme chrome: the proven invitation sections remain intact, while
+   the inherited birthday palette is moved into a stadium/matchday system. */
+.takaven-football-theme {
+  background: #06131d;
+}
+
+.takaven-football-theme main {
+  background: linear-gradient(180deg, #06131d 0%, #0b1f2b 34%, #07131c 100%) !important;
+}
+
+.takaven-football-theme main > .fixed.z-40 {
+  display: none;
+}
+
+.takaven-football-theme main > section {
+  background: linear-gradient(180deg, #071723 0%, #0a2630 100%) !important;
+  color: #eef8f0;
+}
+
+.takaven-football-theme main > section:nth-of-type(even) {
+  background: linear-gradient(180deg, #0a2630 0%, #07151f 100%) !important;
+}
+
+.takaven-football-theme main > section > .absolute {
+  opacity: 0.08;
+}
+
+.takaven-football-theme main h1,
+.takaven-football-theme main h2,
+.takaven-football-theme main h3 {
+  color: #f0f8f2 !important;
+}
+
+.takaven-football-theme main h1 {
+  background: linear-gradient(100deg, #f2faf3 0%, #a9e7bc 55%, #69c98c 100%) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+}
+
+.takaven-football-theme main p,
+.takaven-football-theme main span {
+  color: rgba(225, 243, 229, 0.76);
+}
+
+.takaven-football-theme main section:first-of-type .inline-block {
+  display: none;
+}
+
+.takaven-football-theme main section:first-of-type .bg-white\/80 {
+  border: 1px solid rgba(169, 231, 188, 0.32);
+  background: rgba(6, 19, 29, 0.8) !important;
+  color: #effaf2;
+}
+
+.takaven-football-theme main section:first-of-type .text-gray-800 {
+  color: #effaf2 !important;
+}
+
+.takaven-football-theme main section > div > .bg-white,
+.takaven-football-theme main form,
+.takaven-football-theme main section .bg-white.rounded-3xl {
+  border: 1px solid rgba(169, 231, 188, 0.22);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
+}
+
+.takaven-football-theme main form button[type='submit'] {
+  background: linear-gradient(100deg, #0e7a5a 0%, #0d9b68 48%, #6dbb4e 100%) !important;
+}
+
+.takaven-football-theme main footer {
+  background: linear-gradient(135deg, #071c27 0%, #0e5a43 100%) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .takaven-football-opening {
+    display: none !important;
+  }
+
+  .takaven-football-theme main * {
+    scroll-behavior: auto !important;
+  }
+}

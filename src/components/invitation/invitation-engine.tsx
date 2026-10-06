@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import type { EventConfig } from '@/lib/engine/contracts'
 import { openingExperienceRegistry } from '@/lib/engine/theme-registry'
 import { FootballOpening } from './football-opening'
+import { FootballThemeFrame } from './football-theme-frame'
 
 interface InvitationEngineProps {
   config: EventConfig
@@ -34,18 +35,11 @@ export function InvitationEngine({ config, children }: InvitationEngineProps) {
 
   return (
     <>
-      <AnimatePresence>
-        {openingVisible && config.openingExperienceId === 'football-kick' && (
-          <motion.div
-            key="football-opening"
-            className="fixed inset-0 z-[10000]"
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.35 }}
-          >
-            <FootballOpening config={config} onComplete={completeOpening} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {openingVisible && config.openingExperienceId === 'football-kick' && (
+        <div key="football-opening" className="fixed inset-0 z-[10000]">
+          <FootballOpening config={config} onComplete={completeOpening} />
+        </div>
+      )}
 
       <AnimatePresence>
         {revealVisible && (
@@ -67,7 +61,9 @@ export function InvitationEngine({ config, children }: InvitationEngineProps) {
         )}
       </AnimatePresence>
 
-      <div aria-hidden={openingVisible || revealVisible}>{children}</div>
+      <div aria-hidden={openingVisible || revealVisible}>
+        <FootballThemeFrame config={config}>{children}</FootballThemeFrame>
+      </div>
     </>
   )
 }

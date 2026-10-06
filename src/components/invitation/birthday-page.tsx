@@ -18,7 +18,8 @@ import {
   Sparkles,
   Balloon,
   Users,
-  Heart
+  Heart,
+  Trophy
 } from 'lucide-react'
 import { Invitation } from '@/types/database'
 import { Button } from '@/components/ui/button'
@@ -208,11 +209,13 @@ function AnimatedAge({ age }: { age: number }) {
 function BirthdayCountdown({
   targetDate,
   targetTime,
-  timeZone
+  timeZone,
+  football = false
 }: {
   targetDate: string
   targetTime?: string | null
   timeZone?: string
+  football?: boolean
 }) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
 
@@ -239,10 +242,10 @@ function BirthdayCountdown({
   return (
     <div className="grid grid-cols-4 gap-4 md:gap-8 max-w-3xl mx-auto">
       {[
-        { value: timeLeft.days, label: 'Gün', color: 'from-pink-500 to-rose-500' },
-        { value: timeLeft.hours, label: 'Saat', color: 'from-purple-500 to-pink-500' },
-        { value: timeLeft.minutes, label: 'Dakika', color: 'from-blue-500 to-purple-500' },
-        { value: timeLeft.seconds, label: 'Saniye', color: 'from-cyan-500 to-blue-500' }
+        { value: timeLeft.days, label: football ? 'Days' : 'Gün', color: football ? 'from-emerald-700 to-teal-500' : 'from-pink-500 to-rose-500' },
+        { value: timeLeft.hours, label: football ? 'Hours' : 'Saat', color: football ? 'from-slate-800 to-slate-600' : 'from-purple-500 to-pink-500' },
+        { value: timeLeft.minutes, label: football ? 'Min' : 'Dakika', color: football ? 'from-lime-700 to-emerald-500' : 'from-blue-500 to-purple-500' },
+        { value: timeLeft.seconds, label: football ? 'Sec' : 'Saniye', color: football ? 'from-cyan-700 to-teal-500' : 'from-cyan-500 to-blue-500' }
       ].map((item, idx) => (
         <motion.div
           key={idx}
@@ -301,7 +304,7 @@ function MusicPlayer({ musicUrl }: { musicUrl?: string | null }) {
 }
 
 // RSVP Form
-function RSVPForm({ invitationId, onSuccess }: { invitationId: string; onSuccess: () => void }) {
+function RSVPForm({ invitationId, onSuccess, football = false }: { invitationId: string; onSuccess: () => void; football?: boolean }) {
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [attending, setAttending] = useState('yes')
@@ -356,7 +359,7 @@ function RSVPForm({ invitationId, onSuccess }: { invitationId: string; onSuccess
       </div>
 
       <div>
-        <Label className="text-gray-700 font-semibold text-lg mb-3 block">Katılacak mısınız? *</Label>
+        <Label className="text-gray-700 font-semibold text-lg mb-3 block">{football ? 'Will you join the squad? *' : 'Katılacak mısınız? *'}</Label>
         <RadioGroup
           value={attending}
           onValueChange={setAttending}
@@ -365,13 +368,13 @@ function RSVPForm({ invitationId, onSuccess }: { invitationId: string; onSuccess
           <div className="flex items-center space-x-2 flex-1">
             <RadioGroupItem value="yes" id="yes" className="border-pink-500 text-pink-500" />
             <Label htmlFor="yes" className="cursor-pointer text-gray-700 font-medium">
-              Evet, geleceğim!
+              {football ? "I'm in!" : 'Evet, geleceğim!'}
             </Label>
           </div>
           <div className="flex items-center space-x-2 flex-1">
             <RadioGroupItem value="no" id="no" className="border-gray-500 text-gray-500" />
             <Label htmlFor="no" className="cursor-pointer text-gray-700 font-medium">
-              Katılamayacağım
+              {football ? "Can't make it" : 'Katılamayacağım'}
             </Label>
           </div>
         </RadioGroup>
@@ -380,7 +383,7 @@ function RSVPForm({ invitationId, onSuccess }: { invitationId: string; onSuccess
       {attending === 'yes' && (
         <div>
           <Label className="text-gray-700 font-semibold text-lg" htmlFor="guests">
-            Kaç kişi geleceksiniz?
+            {football ? 'How many players?' : 'Kaç kişi geleceksiniz?'}
           </Label>
           <Input
             type="number"
@@ -395,14 +398,14 @@ function RSVPForm({ invitationId, onSuccess }: { invitationId: string; onSuccess
       )}
 
       <div>
-        <Label className="text-gray-700 font-semibold text-lg" htmlFor="message">
-          Doğum günü mesajınız (isteğe bağlı)
+          <Label className="text-gray-700 font-semibold text-lg" htmlFor="message">
+            {football ? 'Message for matchday (optional)' : 'Doğum günü mesajınız (isteğe bağlı)'}
         </Label>
         <Textarea
           className="mt-2 border-2 border-gray-200 focus:border-pink-400 rounded-xl text-lg"
           id="message"
           name="message"
-          placeholder="Dileklerinizi yazın..."
+          placeholder={football ? 'Leave a note for the squad...' : 'Dileklerinizi yazın...'}
           rows={3}
         />
       </div>
@@ -419,7 +422,7 @@ function RSVPForm({ invitationId, onSuccess }: { invitationId: string; onSuccess
         className="w-full gap-2 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 hover:from-pink-600 hover:via-purple-600 hover:to-blue-600 text-white font-bold text-lg py-6 rounded-xl shadow-lg"
       >
         <Send className="w-5 h-5" />
-        {loading ? 'Gönderiliyor...' : 'Katılımı Onayla'}
+        {loading ? 'Sending...' : football ? 'Confirm my place' : 'Katılımı Onayla'}
       </Button>
     </form>
   )
@@ -458,7 +461,6 @@ function PartyDecorations() {
 
 export function BirthdayPage({ invitation }: BirthdayPageProps) {
   const [showRSVPSuccess, setShowRSVPSuccess] = useState(false)
-  const [showConfetti, setShowConfetti] = useState(true)
   const heroRef = useRef<HTMLElement>(null)
   const { scrollY } = useScroll()
 
@@ -471,10 +473,13 @@ export function BirthdayPage({ invitation }: BirthdayPageProps) {
     age?: number
     entry_animation?: string
     timezone?: string
+    theme_id?: string
     show_dietary?: boolean
     show_gift_section?: boolean
   }
   const age = customFields?.age || 0
+  const isFootballTheme = customFields?.theme_id === 'football'
+  const showConfetti = !isFootballTheme
 
   // Extract Google Maps embed URL
   const getMapEmbedUrl = (mapUrl: string) => {
@@ -560,7 +565,11 @@ export function BirthdayPage({ invitation }: BirthdayPageProps) {
               animate={{ rotate: [0, 10, -10, 10, 0] }}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <PartyPopper className="w-16 h-16 md:w-20 md:h-20 text-pink-500 mx-auto" />
+              {isFootballTheme ? (
+                <Trophy className="w-16 h-16 md:w-20 md:h-20 text-emerald-500 mx-auto" />
+              ) : (
+                <PartyPopper className="w-16 h-16 md:w-20 md:h-20 text-pink-500 mx-auto" />
+              )}
             </motion.div>
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4 bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
@@ -581,7 +590,7 @@ export function BirthdayPage({ invitation }: BirthdayPageProps) {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.8 }}
                 >
-                  Yaşına Basıyor!
+                  {isFootballTheme ? 'Matchday for' : 'Yaşına Basıyor!'}
                 </motion.p>
                 <AnimatedAge age={age} />
               </div>
@@ -656,18 +665,19 @@ export function BirthdayPage({ invitation }: BirthdayPageProps) {
               <div className="flex items-center justify-center gap-3 mb-4">
                 <Sparkles className="w-8 h-8 text-yellow-500" />
                 <h2 className="text-4xl md:text-5xl font-black text-gray-800">
-                  Geri Sayım Başladı!
+                  {isFootballTheme ? 'Kick-off countdown' : 'Geri Sayım Başladı!'}
                 </h2>
                 <Sparkles className="w-8 h-8 text-yellow-500" />
               </div>
               <p className="text-xl text-gray-600 font-medium">
-                Büyük güne ne kadar kaldı?
+                {isFootballTheme ? 'The fixture is locked in.' : 'Büyük güne ne kadar kaldı?'}
               </p>
             </motion.div>
             <BirthdayCountdown
               targetDate={invitation.event_date}
               targetTime={invitation.event_time}
               timeZone={customFields?.timezone}
+              football={isFootballTheme}
             />
           </div>
         </section>
@@ -682,12 +692,16 @@ export function BirthdayPage({ invitation }: BirthdayPageProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <Cake className="w-16 h-16 text-pink-500 mx-auto mb-4" />
+            {isFootballTheme ? (
+              <Trophy className="w-16 h-16 text-emerald-500 mx-auto mb-4" />
+            ) : (
+              <Cake className="w-16 h-16 text-pink-500 mx-auto mb-4" />
+            )}
             <h2 className="text-4xl md:text-5xl font-black text-gray-800 mb-4">
-              Parti Detayları
+              {isFootballTheme ? 'Matchday details' : 'Parti Detayları'}
             </h2>
             <p className="text-xl text-gray-600">
-              Tüm bilgiler burada!
+              {isFootballTheme ? 'Venue, time and directions for the squad.' : 'Tüm bilgiler burada!'}
             </p>
           </motion.div>
 
@@ -824,10 +838,10 @@ export function BirthdayPage({ invitation }: BirthdayPageProps) {
               viewport={{ once: true }}
             >
               <h2 className="text-4xl md:text-5xl font-black text-gray-800 mb-4">
-                Katılacak mısınız?
+                {isFootballTheme ? 'Join the squad?' : 'Katılacak mısınız?'}
               </h2>
               <p className="text-xl text-gray-600 font-medium">
-                Sizi aramızda görmek isteriz!
+                {isFootballTheme ? 'Lock in your place on matchday.' : 'Sizi aramızda görmek isteriz!'}
               </p>
             </motion.div>
 
@@ -864,6 +878,7 @@ export function BirthdayPage({ invitation }: BirthdayPageProps) {
                 >
                   <RSVPForm
                     invitationId={invitation.id}
+                    football={isFootballTheme}
                     onSuccess={() => setShowRSVPSuccess(true)}
                   />
                 </motion.div>
@@ -880,7 +895,11 @@ export function BirthdayPage({ invitation }: BirthdayPageProps) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <PartyPopper className="w-12 h-12 text-white/80 mx-auto mb-4" />
+          {isFootballTheme ? (
+            <Trophy className="w-12 h-12 text-emerald-100/80 mx-auto mb-4" />
+          ) : (
+            <PartyPopper className="w-12 h-12 text-white/80 mx-auto mb-4" />
+          )}
           <p className="text-5xl font-black text-white mb-2">
             {invitation.title}
           </p>
@@ -890,7 +909,7 @@ export function BirthdayPage({ invitation }: BirthdayPageProps) {
             </p>
           )}
           <p className="text-sm text-white/70 mt-8 uppercase tracking-wider font-medium">
-            Hep birlikte kutlayalım!
+            {isFootballTheme ? 'See you under the lights.' : 'Hep birlikte kutlayalım!'}
           </p>
         </motion.div>
       </footer>

@@ -27,3 +27,24 @@ written permission.
   skip, reduced-motion, and media-failure-safe behavior.
 - `public/takaven/opening/football-placeholder.svg` — original TAKAVEN placeholder
   artwork created for engineering validation.
+
+## Phase 2 TAKAVEN additions
+
+- `src/components/invitation/football-opening.tsx` — original procedural Canvas
+  2D opening. It uses no third-party code, media, model, audio, or frame assets.
+  It adapts the lifecycle goals identified in the PRIOR, Cinematic, Emirates
+  Sport Club, and scroll-hero references without copying their implementation.
+- `src/components/invitation/football-theme-frame.tsx` — original Football
+  matchday chrome around the existing invitation shell; no RSVP/countdown/data
+  logic is duplicated.
+- `src/lib/supabase/middleware.ts` — narrow local demo-mode bypass for `/i/*`
+  routes, guarded by `TAKAVEN_DEMO_MODE=true`; production auth behavior is
+  unchanged.
+
+### Phase 2 reference-only discoveries
+
+The targeted scout also reviewed `Remilya/scroll-hero` (MIT),
+`m1ckc3s/ripple` (license not surfaced), and
+`Akash-AIML/stadium-os-fifa2026` (license not surfaced). None was copied into
+the product. They remain recorded in `docs/reuse-scout-log.md` as future
+mechanism references only.

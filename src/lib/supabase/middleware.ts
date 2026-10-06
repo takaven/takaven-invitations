@@ -6,6 +6,14 @@ export async function updateSession(request: NextRequest) {
     request,
   })
 
+  // The public demo fixture is intentionally usable without credentials so
+  // visual QA can run before the owner's Supabase environment is connected.
+  // This branch is limited to local/demo invitation routes; production routes
+  // still require the normal Supabase session refresh below.
+  if (process.env.TAKAVEN_DEMO_MODE === 'true' && request.nextUrl.pathname.startsWith('/i/')) {
+    return response
+  }
+
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,

@@ -17,6 +17,12 @@ until the Orchestrator resolves it.
 | 2026-10-06 | PASS | RSVP-disabled invitations are now guarded both in `submitRSVP` and the Supabase INSERT policy. | RSVP / Data |
 | 2026-10-06 | PASS | Football countdown now combines event date, event time, and configured IANA timezone without changing the engine boundary. | Base / Event Engine |
 | 2026-10-06 | WARNING | Real Supabase connectivity could not be executed: no project URL/anon key is configured and the available management token returned 401. | Owner / RSVP / Data |
+| 2026-10-06 | PASS | Targeted Football/cinematic reuse scouting completed before major visual implementation. No external game code, frames, video, audio, models, or sample media were copied. | Reuse Scout / Orchestrator |
+| 2026-10-06 | PASS | Football remains configuration-selected through the existing opening registry and is not a football-specific public route or RSVP implementation. | Orchestrator / Cinematic Experience |
+| 2026-10-06 | PASS | Existing invitation shell, countdown, directions, RSVP action, and operator workflow remain the source of truth; the Football frame only skins and labels the shell. | Base / Event Engine |
+| 2026-10-06 | PASS | No second theme, billing, SaaS expansion, new database, or media pipeline was added. | Drift Guard |
+| 2026-10-06 | WARNING | The procedural player is an engineering-quality silhouette, not final commercial Football artwork. Visual production remains a later owner-approved step. | Visual QA / Owner |
+| 2026-10-06 | WARNING | Full production-mode browser validation remains blocked until Supabase URL and anon key are supplied; demo-mode visual validation is separate and does not prove persistence. | RSVP / Data |
 
 ## Active guard rules
 

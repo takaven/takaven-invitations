@@ -24,3 +24,29 @@ Only discoveries that materially reduce work are recorded here.
   reference only.
 - Mobile media: original SVG placeholder plus skip/reduced-motion behavior;
   no third-party media copied.
+
+## Phase 2 targeted football/cinematic checkpoint — 2026-10-06
+
+The required targeted search was completed before replacing the placeholder opening.
+The conclusion is to transplant mechanisms, not third-party game code or sample media.
+
+| Repository | Relevant component / pattern | Technology | Recommendation | Integration cost | Performance / licensing risk | Decision |
+|---|---|---|---|---|---|---|
+| [`tahsinmert/emirates-sport-club`](https://github.com/tahsinmert/emirates-sport-club) | Video-centric football hero, preloader, page transition, mobile simplification | SvelteKit, GSAP, muted video | REFERENCE / ADAPT | Medium | MIT; video payload and Svelte components do not transplant cleanly | Use the pacing, preloader and mobile fallback principles. Do not import the Svelte/video stack. |
+| [`TidyFactor/Cinematic`](https://github.com/TidyFactor/Cinematic) | Canvas frame-sequence lifecycle, bounded preload, missing-asset and reduced-motion fallbacks | Canvas, numbered JPG sequence, GSAP guidance | REFERENCE / PATTERN | Low for lifecycle; high for media production | MIT; frame payload can become very large; source explicitly warns against video scrubbing | Keep the lifecycle and fallback ideas. Do not copy the repo's media or commit to frame sequences before real Football assets are tested. |
+| [`unknown11-svg/Soccer_ThreeJS`](https://github.com/unknown11-svg/Soccer_ThreeJS) | Procedural football scene with player, ball, camera and stadium | Three.js | REFERENCE | High | License file exists, but a full game/3D scene is far beyond the invitation need | Do not transplant the game. The procedural scene concept supports a lightweight canvas proof instead. |
+| [`acherm/fifacher`](https://github.com/acherm/fifacher) | Procedural pitch, stadium, player, ball and camera systems | Three.js, procedural geometry | REFERENCE | High | Game loop, controls and audio would add unnecessary product surface | Ignore as an implementation dependency; borrow only the idea of procedural, asset-light football visuals. |
+| [`kendrekaran/striker-3d`](https://github.com/kendrekaran/striker-3d) | Procedural football/stadium with optional GLB player and graceful player fallback | Three.js, GLB, Web Audio | REFERENCE | High | External character asset has separate provenance; 3D runtime cost is material on phones | Do not import. Its fallback discipline reinforces the non-blocking opening requirement. |
+| [`shnwz3/TravelScroll-Animation`](https://github.com/shnwz3/TravelScroll-Animation) | Canvas image-sequence scrubbing and spatial typography | Next.js, GSAP, Framer Motion, Canvas | REFERENCE / PATTERN | Medium | Sequence payload and scroll coupling are unnecessary for a timed opening | Keep as an option for a future asset-backed master; not used in this slice. |
+| [`Remilya/scroll-hero`](https://github.com/Remilya/scroll-hero) | Canvas frame scrub, poster fallback, Save-Data/reduced-motion handling and teardown | Canvas, vanilla JS | REFERENCE / PATTERN | Low for lifecycle; medium for a future frame-backed master | MIT; still requires a real media budget and authored frames | Scout found it after the first search. Keep as the strongest future frame-sequence reference; do not add it to the current timed opening. |
+| [`m1ckc3s/ripple`](https://github.com/m1ckc3s/ripple) | Shader-based ripple/displacement impact transition | React, WebGL fragment shader | REFERENCE / OPTIONAL | Medium to high | Licence not surfaced in the scout result; WebGL adds mobile failure surface | Consider only after the procedural impact is judged insufficient. Not imported in Phase 2. |
+| [`Akash-AIML/stadium-os-fifa2026`](https://github.com/Akash-AIML/stadium-os-fifa2026) | Floating stadium/football hero, particles and shader grass | React, Three.js/WebGL | REFERENCE | High | Licence not surfaced; unnecessary runtime weight | Reference only. Full 3D was deliberately rejected for this slice. |
+
+### Phase 2 decision
+
+For the first premium proof, TAKAVEN will use a new, procedural Canvas 2D opening
+inside the existing `OpeningExperience` boundary. This is the smallest mechanism
+that can show stadium atmosphere, player approach, kick, ball-to-camera and impact
+without importing a game engine or a large third-party media payload. The visual
+language is original TAKAVEN code; no third-party code, footage, frames, models,
+audio or sample assets are copied.
