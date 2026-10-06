@@ -146,8 +146,11 @@ No new repository materially changed implementation. The approved
 
 ## 14. COMMIT SHA
 
-Pending Phase 1.1 commit after owner environment validation is supplied. The
-starting approved Phase 1 commit is:
+Phase 1.1 validation changes:
+
+`654dae7f12a1100e6b386e6c30b7ee81ed7cc0c0`
+
+Starting approved Phase 1 commit:
 
 `317ed24925c529f4bcc4540cdf6faa23e33d658e`
 
